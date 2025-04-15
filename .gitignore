@@ -2,3 +2,4 @@ backend/node_modules/
 backend/todo.db
 backend/.env
 backend/coverage/
+backend/todo-test.db

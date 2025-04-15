@@ -3,7 +3,12 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { db, init } = require('../models/db');
 const app = require('../server');
-const { JWT_SECRET } = require('../config/db');
+const { JWT_SECRET, dbFile } = require('../config/db');
+const fs = require('fs');
+const path = require('path');
+
+// Set test database path
+process.env.NODE_ENV = 'test';
 
 // Test users and tokens
 let user1Token, user2Token;
@@ -20,9 +25,19 @@ const testTodos = [
 ];
 
 beforeAll((done) => {
-  // Initialize database and create tables
-  init();
+  // Delete test database if exists
+  if (fs.existsSync(dbFile)) {
+    try {
+      fs.unlinkSync(dbFile);
+    } catch (err) {
+      if (err.code !== 'EBUSY') throw err;
+      console.warn('Could not delete test database file, it may be locked');
+    }
+  }
 
+  // Initialize database
+  init();
+  
   // Seed test data after tables are created
   const checkTable = () => {
     db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='users'", 

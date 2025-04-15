@@ -1,6 +1,11 @@
 const request = require('supertest');
 const { db, init } = require('../models/db');
 const app = require('../server');
+const { dbFile } = require('../config/db');
+const fs = require('fs');
+
+// Set test database path
+process.env.NODE_ENV = 'test';
 
 // Mock the config/db to use in-memory database and test JWT secret
 jest.mock('../config/db', () => ({
@@ -10,8 +15,12 @@ jest.mock('../config/db', () => ({
 
 describe('Authentication API Tests', () => {
   beforeAll((done) => {
-    // Initialize database - call the standalone init function
-    init(); // This matches your module.exports
+    // Delete test database if exists
+    if (fs.existsSync(dbFile)) {
+      fs.unlinkSync(dbFile);
+    }
+    // Initialize database
+    init(); 
     
     // Check for table creation
     const checkTable = () => {

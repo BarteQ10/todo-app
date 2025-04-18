@@ -57,6 +57,7 @@ const Login = ({ toast }) => {
               <label htmlFor="username" className="block mb-2">Username</label>
               <InputText
                 id="username"
+                data-testid="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
@@ -68,6 +69,7 @@ const Login = ({ toast }) => {
               <label htmlFor="password" className="block mb-2">Password</label>
               <Password
                 id="password"
+                data-testid="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 feedback={false}

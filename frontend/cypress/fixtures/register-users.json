@@ -1,0 +1,22 @@
+{
+    "newUser": {
+        "username": "newuser@example.com",
+        "password": "StrongPass123!",
+        "confirmPassword": "StrongPass123!"
+    },
+    "existingUser": {
+        "username": "existing@example.com",
+        "password": "Password123!",
+        "confirmPassword": "Password123!"
+    },
+    "mismatchedPasswords": {
+        "username": "test@example.com",
+        "password": "Password123!",
+        "confirmPassword": "DifferentPass123!"
+    },
+    "shortPassword": {
+        "username": "test@example.com",
+        "password": "Short1!",
+        "confirmPassword": "Short1!"
+    }
+}

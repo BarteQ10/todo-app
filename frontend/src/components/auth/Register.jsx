@@ -16,7 +16,7 @@ const Register = ({ toast }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (password !== confirmPassword) {
       toast.current.show({
         severity: 'error',
@@ -26,12 +26,12 @@ const Register = ({ toast }) => {
       });
       return;
     }
-    
+
     setLoading(true);
-    
+
     try {
       const result = await register({ username, password });
-      
+
       if (result.success) {
         toast.current.show({
           severity: 'success',
@@ -69,17 +69,19 @@ const Register = ({ toast }) => {
               <label htmlFor="username" className="block mb-2">Username</label>
               <InputText
                 id="username"
+                data-testid="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
                 className="w-full"
               />
             </div>
-            
+
             <div className="field mb-4">
               <label htmlFor="password" className="block mb-2">Password</label>
               <Password
                 id="password"
+                data-testid="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 toggleMask
@@ -87,11 +89,12 @@ const Register = ({ toast }) => {
                 className="w-full"
               />
             </div>
-            
+
             <div className="field mb-4">
               <label htmlFor="confirmPassword" className="block mb-2">Confirm Password</label>
               <Password
                 id="confirmPassword"
+                data-testid="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 feedback={false}
@@ -100,7 +103,7 @@ const Register = ({ toast }) => {
                 className="w-full"
               />
             </div>
-            
+
             <Button
               type="submit"
               label="Register"
@@ -108,7 +111,7 @@ const Register = ({ toast }) => {
               className="mt-3"
               loading={loading}
             />
-            
+
             <div className="mt-4 text-center">
               <p>Already have an account? <Link to="/login">Login</Link></p>
             </div>

@@ -1,14 +1,14 @@
 {
-    "validUser": {
-      "username": "test@test.com",
-      "password": "Test1234!"
-    },
-    "invalidUser": {
-      "username": "invalid@test.com",
-      "password": "WrongPassword123!"
-    },
-    "emptyUser": {
-      "username": "",
-      "password": ""
-    }
+  "validUser": {
+    "username": "test@test.com",
+    "password": "Test1234!"
+  },
+  "invalidUser": {
+    "username": "invalid@test.com",
+    "password": "WrongPassword123!"
+  },
+  "emptyUser": {
+    "username": "",
+    "password": ""
   }
+}
